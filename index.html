@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nossa História de Amor ❤️</title>
+    <style>
+      @keyframes heartbeat {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes floating {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes glow {
+        0% {
+          box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+        }
+        50% {
+          box-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
+        }
+        100% {
+          box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+        }
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(
+          45deg,
+          #2c1c1e 0%,
+          #252525 50%,
+          #3f2626 100%
+        );
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        animation: fadeIn 1.5s ease-in-out;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 40px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 25px;
+        box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .header::before {
+        content: "❤️";
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 24px;
+        animation: heartbeat 1.5s infinite;
+      }
+
+      .header::after {
+        content: "❤️";
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: 24px;
+        animation: heartbeat 1.5s infinite;
+      }
+
+      h1 {
+        color: #ff1493;
+        margin-bottom: 25px;
+        font-size: 3em;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        position: relative;
+        display: inline-block;
+      }
+
+      h1::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, #ff1493, transparent);
+      }
+
+      .love-counter {
+        font-size: 1.3em;
+        color: #444;
+        margin: 25px 0;
+        line-height: 1.8;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 15px;
+        animation: floating 3s ease-in-out infinite;
+      }
+
+      .love-message {
+        font-style: italic;
+        color: #ff4da6;
+        margin: 25px 0;
+        font-size: 1.2em;
+        padding: 15px;
+        border-left: 4px solid #ff69b4;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 0 15px 15px 0;
+        transition: all 0.3s ease;
+      }
+
+      .love-message:hover {
+        transform: translateX(10px);
+        box-shadow: -5px 5px 15px rgba(255, 105, 180, 0.2);
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 25px;
+        margin-top: 40px;
+      }
+
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 20px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all 0.4s ease;
+        background: white;
+        padding: 12px;
+      }
+
+      .gallery-item::before {
+        content: "❤️";
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 24px;
+        opacity: 0;
+        transition: all 0.3s ease;
+        z-index: 1;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 15px 35px rgba(255, 105, 180, 0.3);
+      }
+
+      .gallery-item:hover::before {
+        opacity: 1;
+        animation: heartbeat 1.5s infinite;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+        display: block;
+        border-radius: 15px;
+        transition: all 0.4s ease;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        z-index: 1000;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+
+      .modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 0 50px rgba(255, 105, 180, 0.5);
+      }
+
+      .modal-content img {
+        max-width: 100%;
+        max-height: 90vh;
+        object-fit: contain;
+        border-radius: 20px;
+      }
+
+      .close {
+        position: absolute;
+        top: 20px;
+        right: 35px;
+        color: #fff;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 1001;
+      }
+
+      .close:hover {
+        color: #ff69b4;
+        transform: rotate(90deg);
+      }
+
+      .nav-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+        padding: 20px;
+        cursor: pointer;
+        font-size: 20px;
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(5px);
+      }
+
+      .nav-button:hover {
+        background: rgba(255, 105, 180, 0.6);
+        transform: translateY(-50%) scale(1.1);
+      }
+
+      .prev {
+        left: 25px;
+      }
+
+      .next {
+        right: 25px;
+      }
+
+      .date-badge {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        background: rgba(255, 105, 180, 0.9);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 15px;
+        font-size: 0.9em;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .gallery-item:hover .date-badge {
+        opacity: 1;
+        transform: translateY(-5px);
+      }
+
+      .timeline {
+        margin-top: 40px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 25px;
+        box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
+      }
+
+      .timeline h2 {
+        color: #ff1493;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 2em;
+      }
+
+      .timeline-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .timeline-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(255, 105, 180, 0.4);
+      }
+
+      .timeline-item img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin-right: 20px;
+        object-fit: cover;
+      }
+
+      .timeline-item .content {
+        flex: 1;
+      }
+
+      .timeline-item h3 {
+        color: #ff1493;
+        margin-bottom: 5px;
+      }
+
+      .timeline-item p {
+        color: #444;
+        font-size: 0.9em;
+      }
+
+      .testimonials {
+        margin-top: 40px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 25px;
+        box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
+      }
+
+      .testimonials h2 {
+        color: #ff1493;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 2em;
+      }
+
+      .testimonial-item {
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+        margin-bottom: 20px;
+        transition: all 0.3s ease;
+      }
+
+      .testimonial-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(255, 105, 180, 0.4);
+      }
+
+      .testimonial-item p {
+        color: #444;
+        font-style: italic;
+      }
+
+      .testimonial-item .author {
+        text-align: right;
+        color: #ff1493;
+        font-weight: bold;
+      }
+
+      @media (max-width: 768px) {
+        .header {
+          padding: 20px;
+        }
+
+        h1 {
+          font-size: 2.2em;
+        }
+
+        .love-counter {
+          font-size: 1.1em;
+        }
+
+        .gallery {
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 15px;
+        }
+
+        .timeline-item img,
+        .music-item img {
+          width: 60px;
+          height: 60px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Nossa História de Amor ❤️</h1>
+        <div class="love-counter">
+          <div id="counter"></div>
+          <div id="precise-counter"></div>
+        </div>
+        <div class="love-message" id="love-message"></div>
+      </div>
+
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="/galera/imag (5).jpg" alt="Nosso primeiro encontro" />
+          <div class="date-badge">Primeiro Natal juntos</div>
+        </div>
+        <div class="gallery-item">
+          <img src="/galera/imag (6).jpg" alt="Momentos especiais" />
+          <div class="date-badge">Primeiro Natal juntos</div>
+        </div>
+        <div class="gallery-item">
+          <img src="/galera/imag (7).jpg" alt="Nossos sorrisos" />
+          <div class="date-badge">Primeiro Natal juntos</div>
+        </div>
+        <div class="gallery-item">
+          <img src="/galera/imag (8).jpg" alt="Aventuras juntos" />
+          <div class="date-badge">Primeiro Natal juntos</div>
+        </div>
+        <div class="gallery-item">
+          <img src="/galera/imag (9).jpg" alt="Momentos de carinho" />
+          <div class="date-badge">Primeiro Natal juntos</div>
+        </div>
+        <div class="gallery-item">
+          <img src="/galera/imag (1).jpg" alt="Nosso amor" />
+          <div class="date-badge">Primeiro Ano novo juntos</div>
+        </div>
+        <div class="gallery-item">
+          <img src="/galera/imag (2).jpg" alt="Nosso amor" />
+          <div class="date-badge">Primeiro Ano novo juntos</div>
+        </div>
+        <div class="gallery-item">
+          <img src="/galera/imag (3).jpg" alt="Nosso amor" />
+          <div class="date-badge">Primeiro Ano novo juntos</div>
+        </div>
+        <div class="gallery-item">
+          <img src="/galera/imag (4).jpg" alt="Nosso amor" />
+          <div class="date-badge">Primeiro Ano novo juntos</div>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <h2>Linha do Tempo do Nosso Amor</h2>
+        <div class="timeline-item">
+          <div class="content">
+            <h3>Primeiro Encontro</h3>
+            <p>Nosso primeiro encontro foi mágico! ❤️</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="content">
+            <h3>nosso primeiro mês de Namoro</h3>
+            <p>Celebramos nosso primeiro mês juntos! 😍</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="content">
+            <h3>Primeiro Natal juntos</h3>
+            <p>Celebramos nosso primeiro natal juntos! 🎅</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="content">
+            <h3>Primeiro Ano novo juntos</h3>
+            <p>Celebramos nosso primeiro ano novo juntos! 🎉</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="content">
+            <h3>Primeira Viagem</h3>
+            <p>Viajamos juntos pela primeira vez e foi incrível! ✈️</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonials">
+        <h2>Depoimentos</h2>
+        <div class="testimonial-item">
+          <p>"Você é a melhor coisa que já aconteceu na minha vida. Te amo!"</p>
+          <div class="author">- Seu Parceiro</div>
+        </div>
+        <div class="testimonial-item">
+          <p>"Cada dia ao seu lado é um presente. Obrigado por tudo!"</p>
+          <div class="author">- Seu Parceiro</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal">
+      <span class="close">&times;</span>
+      <button class="nav-button prev">&#10094;</button>
+      <button class="nav-button next">&#10095;</button>
+      <div class="modal-content">
+        <img src="" alt="Imagem ampliada" />
+      </div>
+    </div>
+
+    <script>
+      const startDate = new Date("2024-10-04T19:00:00");
+
+      const loveMessages = [
+        "Cada momento ao seu lado é uma bênção ❤️",
+        "Seu sorriso ilumina meus dias mais escuros ✨",
+        "Com você, aprendo a amar mais a cada dia 💑",
+        "Nosso amor é minha maior inspiração 🌟",
+        "Você é meu presente favorito da vida 🎁",
+        "Juntos, construímos memórias inesquecíveis 📸",
+        "Seu amor me faz querer ser melhor a cada dia 💫",
+        "Nossa história é meu conto de fadas favorito 👑",
+        "Com você, todo dia é dia de amor ❤️",
+        "Você é o sonho que eu não sabia que tinha 🌙",
+        "Nosso amor é como música para minha alma 🎵",
+        "Cada segundo ao seu lado vale a pena 💖",
+      ];
+
+      function updateCounter() {
+        const now = new Date();
+        const diff = now - startDate;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById("counter").innerHTML = `
+                <strong>Celebrando nosso amor há:</strong><br>
+                ${days} dias, ${hours} horas, ${minutes} minutos e ${seconds} segundos
+            `;
+
+        const messageIndex = Math.floor(
+          (now.getTime() / (1000 * 60 * 60)) % loveMessages.length
+        );
+        document.getElementById("love-message").textContent =
+          loveMessages[messageIndex];
+      }
+
+      setInterval(updateCounter, 1000);
+      updateCounter();
+
+      const gallery = document.querySelector(".gallery");
+      const modal = document.querySelector(".modal");
+      const modalImg = document.querySelector(".modal-content img");
+      const close = document.querySelector(".close");
+      const prev = document.querySelector(".prev");
+      const next = document.querySelector(".next");
+      const items = document.querySelectorAll(".gallery-item img");
+      let currentIndex = 0;
+
+      items.forEach((item, index) => {
+        item.addEventListener("click", () => {
+          currentIndex = index;
+          openModal(item.src);
+        });
+      });
+
+      function openModal(src) {
+        modal.style.display = "block";
+        modalImg.src = src;
+      }
+
+      close.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+
+      prev.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + items.length) % items.length;
+        modalImg.src = items[currentIndex].src;
+      });
+
+      next.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % items.length;
+        modalImg.src = items[currentIndex].src;
+      });
+
+      window.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (modal.style.display === "block") {
+          if (e.key === "ArrowLeft") {
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            modalImg.src = items[currentIndex].src;
+          } else if (e.key === "ArrowRight") {
+            currentIndex = (currentIndex + 1) % items.length;
+            modalImg.src = items[currentIndex].src;
+          } else if (e.key === "Escape") {
+            modal.style.display = "none";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
