@@ -66,6 +66,7 @@
         );
         min-height: 100vh;
         padding: 20px;
+        color: #fff;
       }
 
       .container {
@@ -79,11 +80,12 @@
         text-align: center;
         margin-bottom: 40px;
         padding: 40px;
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(255, 255, 255, 0.1);
         border-radius: 25px;
         box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
         position: relative;
         overflow: hidden;
+        backdrop-filter: blur(10px);
       }
 
       .header::before {
@@ -125,13 +127,14 @@
 
       .love-counter {
         font-size: 1.3em;
-        color: #444;
+        color: #fff;
         margin: 25px 0;
         line-height: 1.8;
         padding: 20px;
-        background: rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.1);
         border-radius: 15px;
         animation: floating 3s ease-in-out infinite;
+        backdrop-filter: blur(5px);
       }
 
       .love-message {
@@ -141,9 +144,10 @@
         font-size: 1.2em;
         padding: 15px;
         border-left: 4px solid #ff69b4;
-        background: rgba(255, 255, 255, 0.7);
+        background: rgba(255, 255, 255, 0.1);
         border-radius: 0 15px 15px 0;
         transition: all 0.3s ease;
+        backdrop-filter: blur(5px);
       }
 
       .love-message:hover {
@@ -165,8 +169,9 @@
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         cursor: pointer;
         transition: all 0.4s ease;
-        background: white;
+        background: rgba(255, 255, 255, 0.1);
         padding: 12px;
+        backdrop-filter: blur(5px);
       }
 
       .gallery-item::before {
@@ -305,9 +310,10 @@
       .timeline {
         margin-top: 40px;
         padding: 20px;
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(255, 255, 255, 0.1);
         border-radius: 25px;
         box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
+        backdrop-filter: blur(10px);
       }
 
       .timeline h2 {
@@ -322,10 +328,11 @@
         align-items: center;
         margin-bottom: 20px;
         padding: 15px;
-        background: rgba(255, 255, 255, 0.8);
+        background: rgba(255, 255, 255, 0.1);
         border-radius: 15px;
         box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
         transition: all 0.3s ease;
+        backdrop-filter: blur(5px);
       }
 
       .timeline-item:hover {
@@ -351,16 +358,17 @@
       }
 
       .timeline-item p {
-        color: #444;
+        color: #fff;
         font-size: 0.9em;
       }
 
       .testimonials {
         margin-top: 40px;
         padding: 20px;
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(255, 255, 255, 0.1);
         border-radius: 25px;
         box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
+        backdrop-filter: blur(10px);
       }
 
       .testimonials h2 {
@@ -372,11 +380,12 @@
 
       .testimonial-item {
         padding: 15px;
-        background: rgba(255, 255, 255, 0.8);
+        background: rgba(255, 255, 255, 0.1);
         border-radius: 15px;
         box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
         margin-bottom: 20px;
         transition: all 0.3s ease;
+        backdrop-filter: blur(5px);
       }
 
       .testimonial-item:hover {
@@ -385,7 +394,7 @@
       }
 
       .testimonial-item p {
-        color: #444;
+        color: #fff;
         font-style: italic;
       }
 
@@ -475,32 +484,54 @@
         <h2>Linha do Tempo do Nosso Amor</h2>
         <div class="timeline-item">
           <div class="content">
-            <h3>Primeiro Encontro</h3>
+            <h3>20 de setembro 2024 - Primeiro Encontro</h3>
             <p>Nosso primeiro encontro foi mágico! ❤️</p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="content">
-            <h3>nosso primeiro mês de Namoro</h3>
+            <h3>4 de Outubro 2024 - O Pedido de Namoro</h3>
+            <p>
+              No dia 4 de Outubro, eu te pedi em namoro. Foi um momento cheio de
+              emoção e esperança. ❤️
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="content">
+            <h3>6 de Outubro 2024 - Ela Disse Sim!</h3>
+            <p>
+              Dois dias depois, no dia 6 de Outubro, você disse "sim"! Foi o
+              início da nossa linda jornada juntos. 😍
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="content">
+            <h3>6 de novembro 2024 - Nosso primeiro mês de Namoro</h3>
             <p>Celebramos nosso primeiro mês juntos! 😍</p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="content">
-            <h3>Primeiro Natal juntos</h3>
+            <h3>25 de dezembro 2024 - Primeiro Natal juntos</h3>
             <p>Celebramos nosso primeiro natal juntos! 🎅</p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="content">
-            <h3>Primeiro Ano novo juntos</h3>
+            <h3>1 de janeiro 2025 - Primeiro Ano novo juntos</h3>
             <p>Celebramos nosso primeiro ano novo juntos! 🎉</p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="content">
-            <h3>Primeira Viagem</h3>
-            <p>Viajamos juntos pela primeira vez e foi incrível! ✈️</p>
+            <h3>4 de janeiro 2025 - Primeira Viagem: Um Dia na Praia</h3>
+            <p>
+              Nossa primeira viagem foi um dia incrível na praia! O sol, o mar e
+              você ao meu lado fizeram desse dia um dos mais especiais da minha
+              vida. 🌊☀️
+            </p>
           </div>
         </div>
       </div>
